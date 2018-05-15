@@ -20,22 +20,21 @@ public class TextController : MonoBehaviour {
         print(myState);
         if (myState == GameStates.start)
         {
-            //SetStoryText(GetStartStory());
+            SetStoryText(GetStartStory());
             StartFirst();
         }else if (myState == GameStates.sState)
         {
-            sState();
+            SetStoryText(GetsStateText());
+            ReturnState();
         }else if (myState == GameStates.mState)
         {
-            mState();
+            SetStoryText(GetmStateText());
+            ReturnState();
         }
 	}
 
-    void StartFirst()
+        void StartFirst()
     {
-        text.text = "I am groot i am groot I am groot i am groot I am groot i am groot " +
-                   "I am groot i am groot I am groot i am groot I am groot i am groot \n\n" +
-                   "Press S to i am Groot, M for I AM GROOT!!";
         if (Input.GetKey(KeyCode.S))
         {
             myState = GameStates.sState;
@@ -43,53 +42,43 @@ public class TextController : MonoBehaviour {
         if (Input.GetKey(KeyCode.M))
         {
             myState = GameStates.mState;
-
         }
     }
 
-    //void StartFirst()
-    //{
-    //    if (Input.GetKey(KeyCode.S))
-    //    {
-    //        myState = GameStates.sState;
-    //    }
-    //}
-
-    void sState()
+    void ReturnState()
     {
-        text.text = "I... am, Groot \n\n" +
-                   "Press R to return to i am Groot";
         if (Input.GetKey(KeyCode.R))
         {
             myState = GameStates.start;
         }
+    }
+
+    string GetsStateText()
+    {
+      return  "I... am, Groot \n\n" +
+                   "Press R to return to i am Groot";
     }
 
     void mState()
     {
-        text.text = "" +
-                   "Press R to return to i am Groot"; 
         if (Input.GetKey(KeyCode.R))
         {
             myState = GameStates.start;
         }
     }
 
-
-
-
-
-
-
-
-
-
+    string GetmStateText()
+    {
+        return "" +
+              "Press R to return to i am Groot"; 
+ 
+    }
 
     string GetStartStory()
     {
         return "I am groot i am groot I am groot i am groot I am groot i am groot " +
                    "I am groot i am groot I am groot i am groot I am groot i am groot \n\n" +
-                   "Press S to i am Groot, M for I AM Groot, G I AM GROOT!!";
+                   "Press S to i am Groot, M for I AM GROOT!!";
     }
 
 
