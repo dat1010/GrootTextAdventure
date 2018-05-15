@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class TextController : MonoBehaviour {
     public Text text;
-    private enum GameStates {start, sState, mState, gState };
+    private enum GameStates {start, sState, mState };
     private GameStates myState;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         myState = GameStates.start;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         print(myState);
         if (myState == GameStates.start)
         {
@@ -25,6 +27,7 @@ public class TextController : MonoBehaviour {
             sState();
         }else if (myState == GameStates.mState)
         {
+            mState();
         }
 	}
 
@@ -32,10 +35,15 @@ public class TextController : MonoBehaviour {
     {
         text.text = "I am groot i am groot I am groot i am groot I am groot i am groot " +
                    "I am groot i am groot I am groot i am groot I am groot i am groot \n\n" +
-                   "Press S to i am Groot, M for I AM Groot, G I AM GROOT!!";
+                   "Press S to i am Groot, M for I AM GROOT!!";
         if (Input.GetKey(KeyCode.S))
         {
             myState = GameStates.sState;
+        }
+        if (Input.GetKey(KeyCode.M))
+        {
+            myState = GameStates.mState;
+
         }
     }
 
@@ -59,7 +67,12 @@ public class TextController : MonoBehaviour {
 
     void mState()
     {
-
+        text.text = "" +
+                   "Press R to return to i am Groot"; 
+        if (Input.GetKey(KeyCode.R))
+        {
+            myState = GameStates.start;
+        }
     }
 
 
